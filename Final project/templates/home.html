@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(120deg, #f6f8ff, #e9efff);
+        margin: 0;
+        padding: 0;
+        }
+    .container{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align:  center;
+        padding: 20px;
+        }
+    .title{
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 30px 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        animation: fadeInDown 1s ease;
+        }
+    .title h2 {
+        margin: 0;
+        font-size : 2em;
+    }
+    .start-btn {
+        margin-top: 40px;
+        padding: 15px 40px;
+        font-size: 18px;
+        background-color:#6a11cb;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: painter;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: background 0.3 ease, transform 0.2s ease;
+    }
+    .start-btn:hover{
+        background-color: #5011a1;
+        transform: scale(1.05);
+    }
+    @keyframes fadeInDown {
+        from{
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0) ;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h2>Selamat Datang Di Kuis Interaktif</h2>
+            <p>Uji pengetahuamu dengan menjawab pertanyaan yang menarik!</p>
+        </div>
+        <a href="{{ url_for('quiz')}}" class="start-btn">Mulai Kuis</a>
+    </div>
+</body>
+</html>

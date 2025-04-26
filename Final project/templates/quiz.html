@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuis</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <style>
+        body{
+            font-family: sans-serif;
+            background: #f1f5f9;
+            padding: 40px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+        }
+        .question {
+            font-weight: bold;
+        }
+        .option {
+            display: block;
+            margin: 8px 0;
+        }
+        input[type="radio"]{
+            display: none;
+        }
+        label {
+            display: block;
+            background: #e5e7eb;
+            padding: 10px 15px;
+            border-radius: 8px ;
+            cursor: pointer;
+            transition: 0.2;
+        }
+        input[type="radio"]:checked + label{
+            background : #6366f1;
+            color:white;
+        }
+        .submit-btn{
+            margin-top:20px;
+            padding:10px 25px;
+            background :#4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor:pointer;
+        }
+        .submit-btn:hover{
+            background: #4338ca;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            {% for q in questions %}
+                <div class="question">
+                    <p>{{ loop.index }}. {{ q[1] }}</p>
+                    {% for i in range(2, 6) %}
+                        <div class="option">
+                            <input type="radio" id="q{{q[0]}}_{{i}}" name="question{{q[0]}}" value="{{i - 1}}">
+                            <label for="q{{q[0]}}_{{i}}">{{ q[i] }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-btn">Kirim</button>
+        </form>
+    </div>
+</body>
+</html>

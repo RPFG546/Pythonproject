@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Kuis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .result-box {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .result-box h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .result-box p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            background-color: #6366f1;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #4338ca;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Hasil Quiz</h2>
+        <p>Kamu menjawab <strong>{{ score }}</strong> dari <strong>{{ total }}</strong> soal dengan benar.</p>
+        <a href="{{ url_for('home') }}" class="start-btn">Kembali ke Beranda</a>
+    </div>
+</body>
+</html>
